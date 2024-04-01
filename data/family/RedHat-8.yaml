@@ -1,0 +1,6 @@
+---
+network::interfaces_type: 'nm::connection'
+
+network::default_interfaces_hash:
+  connection_type: 'ethernet'
+#    autoconnect: 'true'
