@@ -5,8 +5,8 @@ define network::nm::connection(
   String $connection_type = 'ethernet',
   String $interface_name = $name,
   String $autoconnect = 'true',
-  Hash $ipv4 = {},
-  Hash $ipv6 = {},
+  Hash $ipv4 = { 'method' => 'disabled' },
+  Hash $ipv6 = { 'method' => 'disabled' },
   Boolean $force_update = false,
 ) {
 
