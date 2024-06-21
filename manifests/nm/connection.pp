@@ -58,7 +58,7 @@ define network::nm::connection(
     inifile::create_ini_settings($settings_real, $defaults)
 
     exec { "reload_${uuid}":
-      command     => network::nm_reload_connection($uuid, 'up'),
+      command     => network::nm_reload_connection($uuid, 'up', $network::reload),
       group       => 'root',
       user        => 'root',
       refreshonly => true,
