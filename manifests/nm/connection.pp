@@ -9,6 +9,7 @@ define network::nm::connection(
   Optional[String] $port_type = 'bridge',
   Hash $ipv4 = { 'method' => 'disabled' },
   Hash $ipv6 = { 'method' => 'disabled' },
+  Hash $vlan = {},
   Boolean $force_update = false,
 ) {
 
@@ -34,7 +35,8 @@ define network::nm::connection(
         'autoconnect' => $autoconnect
       },
       'ipv4' => $ipv4,
-      'ipv6' => $ipv6
+      'ipv6' => $ipv6,
+      'vlan' => $vlan
     }
     if $controller {
       $settings_controller = {
