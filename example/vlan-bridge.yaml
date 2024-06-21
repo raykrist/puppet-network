@@ -1,0 +1,31 @@
+---
+network::interfaces_hash:
+  eth0:
+    ipv4:
+      method:         'auto'
+    ipv6:
+      method:         'auto'
+  eth1:
+    controller:       'br0'
+  eth2: {}
+  eth2.1:
+    connection_type:  'vlan'
+    controller:       'br1'
+    vlan:
+      parent:         'eth2'
+      id:             1
+      flags:          1
+  br0:
+    connection_type:  'bridge'
+    ipv4:
+      address1:       '192.168.0.10/24'
+      dns:            '8.8.8.8;8.8.8.4.4;'
+      dns-search:     'local'
+      never-default:  'true'
+      method:         'manual'
+  br1:
+    connection_type:  'bridge'
+    ipv4:
+      address:        '192.168.99.10/24'
+      never-default:  'true'
+      method:         'manual'
