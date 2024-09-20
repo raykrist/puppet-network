@@ -1,0 +1,15 @@
+# File Managed by Puppet
+# Interface <%= @name %>
+<% if @description and ! @description.empty? -%>
+# <%= @description %>
+<% end -%>
+<% if @auto -%>
+auto <%= @interface %>
+<% end -%>
+<% if @allow_hotplug -%>
+allow-hotplug <%= @interface %>
+<% end -%>
+<%= @stanza %> <%= @interface %> <%= @family %> <%= @manage_method %>
+<% @config.each_pair do |key, value| -%>
+<%= "\t#{key} #{value}" %>
+<% end %>

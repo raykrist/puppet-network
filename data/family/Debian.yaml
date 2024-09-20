@@ -1,0 +1,4 @@
+---
+network::interfaces_type: 'interfaces::connection'
+network::interfaces::setup::packages: ['ifupdown2']
+network::interfaces::setup::addon_script_support: true
