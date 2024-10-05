@@ -1,11 +1,16 @@
 #
 class network::interfaces::setup(
   Boolean $addon_script_support,
+  Boolean $vlan,
   Array[Optional[String]] $packages,
 ) {
 
   info('setup interfaces!!')
   info($addon_script_support)
+
+  package { 'vlan':
+    ensure => $vlan
+  }
 
   package { $packages:
     ensure => present
