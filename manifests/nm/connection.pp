@@ -14,6 +14,8 @@ define network::nm::connection(
   Boolean $force_update = false,
 ) {
 
+  require network::nm::setup
+
   $config_file =  "/etc/NetworkManager/system-connections/${id}.nmconnection"
   $uuid = network::uuid($id)
 

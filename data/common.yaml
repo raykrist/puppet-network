@@ -1,2 +1,6 @@
 ---
 network::reload: false
+
+network::nm::setup::nm_service_name:  'NetworkManager'
+network::nm::setup::packages:         {}
+network::nm::setup::nm_custom_config: {}
