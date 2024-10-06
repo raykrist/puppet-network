@@ -9,7 +9,7 @@ class network::interfaces::setup(
   info($addon_script_support)
 
   package { 'vlan':
-    ensure => $vlan
+    ensure => $vlan ? { default => 'present', false => 'absent' }
   }
 
   package { $packages:
