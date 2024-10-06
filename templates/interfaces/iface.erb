@@ -9,7 +9,7 @@ auto <%= @interface %>
 <% if @allow_hotplug -%>
 allow-hotplug <%= @interface %>
 <% end -%>
-<%= @stanza %> <%= @interface %> <%= @family %> <%= @manage_method %>
+<%= @stanza %> <%= @interface %> <%= @family %> <%= @method %>
 <% @config.each_pair do |key, value| -%>
 <%= "\t#{key} #{value}" %>
 <% end %>
