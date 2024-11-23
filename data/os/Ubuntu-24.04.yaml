@@ -1,0 +1,14 @@
+---
+#
+# default use NetworkManager for Ubuntu
+#
+network::interfaces_type: 'nm::connection'
+
+network::nm::setup::packages:
+  'network-manager':    { ensure: 'present' }
+
+# override this to let NetworkManager manage all network devices
+network::nm::setup::nm_custom_config:
+  '10-globally-managed-devices.conf':
+    'config':
+      'keyfile': {}
