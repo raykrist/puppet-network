@@ -2,6 +2,7 @@
 class network(
   Boolean $reload,
   String $interfaces_type,
+  Boolean $manage_services,
   Hash $interfaces_hash = {},
   Hash $default_interfaces_hash = {},
 ) {

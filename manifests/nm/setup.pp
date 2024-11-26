@@ -5,9 +5,11 @@ class network::nm::setup(
   Hash $nm_custom_config,
 ) {
 
-  service { $nm_service_name:
-    ensure => 'running',
-    enable => true
+  if $::network::manage_services {
+    service { $nm_service_name:
+      ensure => 'running',
+      enable => true
+    }
   }
 
   create_resources('package', $packages)

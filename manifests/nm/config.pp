@@ -15,10 +15,14 @@ define network::nm::config(
     group   => 'root',
     mode    => '0600',
     content => $force_update? { true => '', default => undef },
-    notify  => Service[$nm_service_name]
+    notify  => $::network::manage_services? { true => Service[$nm_service_name], default => undef }
   }
 
-  $defaults = { 'path' => $config_file, 'key_val_separator' => '=', notify => Service[$nm_service_name] }
+  $defaults = {
+    'path' => $config_file,
+    'key_val_separator' => '=',
+    notify  => $::network::manage_services? { true => Service[$nm_service_name], default => undef }
+  }
   inifile::create_ini_settings($config, $defaults)
 
 
