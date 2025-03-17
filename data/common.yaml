@@ -7,3 +7,13 @@ network::use_config_class: false
 network::nm::setup::nm_service_name:  'NetworkManager'
 network::nm::setup::packages:         {}
 network::nm::setup::nm_custom_config: {}
+
+network::config_db::main::config_db_file: '/etc/sonic/config_db.json'
+network::config_db::main::json_skip_undef: true
+network::config_db::main::json_opts:
+  space: ' '
+  space_before: ''
+  indent: '    '
+  object_nl: "\n"
+  array_nl: ""
+  allow_nan: false
