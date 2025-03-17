@@ -15,8 +15,9 @@ define network::interfaces::connection(
 
   $config_file =  "/etc/network/interfaces.d/${name}"
 
-  info("create config file ${config_file}")
-
+  if $network::debug {
+    info("DEBUG:create config file ${config_file}")
+  }
   file { "interface-${name}":
     ensure  => $ensure,
     path    => "/etc/network/interfaces.d/${name}",

@@ -1,6 +1,8 @@
 ---
 network::reload: false
+network::debug: false
 network::manage_services: true
+network::use_config_class: false
 
 network::nm::setup::nm_service_name:  'NetworkManager'
 network::nm::setup::packages:         {}
