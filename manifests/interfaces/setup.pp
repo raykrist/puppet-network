@@ -5,9 +5,6 @@ class network::interfaces::setup(
   Array[Optional[String]] $packages,
 ) {
 
-  info('setup interfaces!!')
-  info($addon_script_support)
-
   package { 'vlan':
     ensure => $vlan ? { default => 'present', false => 'absent' }
   }
