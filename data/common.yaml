@@ -15,5 +15,5 @@ network::config_db::main::json_opts:
   space_before: ''
   indent: '    '
   object_nl: "\n"
-  array_nl: ""
+  array_nl: "\n"
   allow_nan: false
