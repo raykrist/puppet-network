@@ -17,7 +17,7 @@ define network::nm::connection(
   require network::nm::setup
 
   $config_file =  "/etc/NetworkManager/system-connections/${id}.nmconnection"
-  if fact('nm_connections') and has_key($facts['nm_connections'], $id) {
+  if fact("nm_connections.${id}.uuid") {
     $uuid = $facts['nm_connections'][$id]['uuid']
   } else {
     $uuid = network::uuid($id)

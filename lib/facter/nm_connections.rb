@@ -1,6 +1,6 @@
 Facter.add(:nm_connections, :type => :aggregate) do
-  nmcli = '/bin/nmcli' #Facter.value('nm_nmcli_path')
-  if nmcli
+  nmcli = Facter.value('nm_nmcli_path')
+  unless nmcli.empty?
     chunk(:connections) do
       interfaces = {}
 
