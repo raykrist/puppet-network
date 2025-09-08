@@ -1,0 +1,17 @@
+###
+### File managed by Puppet module puppet-network
+###
+#
+# reserved values
+#
+255     local
+254     main
+253     default
+0       unspec
+#
+# local
+#
+#1      inr.ruhep
+<% @tables.each do |key, value| -%>
+<%= "#{value['table_id']}\t#{key}" %>
+<% end -%>
