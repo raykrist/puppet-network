@@ -7,6 +7,8 @@ define network::nm::connection(
   String $autoconnect = 'true',
   Optional[String] $controller = undef,
   Optional[String] $port_type = 'bridge',
+  Hash bond = {},
+  Hash bond_port = {},
   Hash $ethernet = {},
   Hash $ipv4 = { 'method' => 'disabled' },
   Hash $ipv6 = { 'method' => 'disabled' },
@@ -41,10 +43,12 @@ define network::nm::connection(
         'type' => $connection_type,
         'autoconnect' => $autoconnect
       },
-      'ethernet' => $ethernet,
-      'ipv4' => $ipv4,
-      'ipv6' => $ipv6,
-      'vlan' => $vlan
+      'ethernet'  => $ethernet,
+      'bond'      => $bond,
+      'bond-port' => $bond_port,
+      'ipv4'      => $ipv4,
+      'ipv6'      => $ipv6,
+      'vlan'      => $vlan
     }
     if $controller {
       $settings_controller = {
