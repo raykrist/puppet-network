@@ -2,9 +2,10 @@
 # This class will add helper scripts to
 # * take down all endpoint ports
 # * take up all endpoint ports,
-# ports matching 'desc_filter' or has 'admin_status' down will not be changed
+# ports matching 'desc_filter' or has 'admin_status' down will not be changed!
 #
 class network::config_db::scripts(
+  Enum['present', 'absent'] $ensure = 'present',
   Array $desc_filter = ["peerlink", "downlink", "uplink", "test"],
   Hash $interfaces_hash = $network::config_db::main::interfaces_hash,
   Hash $default_interfaces_hash = $network::config_db::main::default_interfaces_hash,
@@ -26,6 +27,14 @@ class network::config_db::scripts(
     owner   => "root",
     mode    => '0700',
     content => template("${module_name}/config_db/down_ports.py.erb"),
+  }
+
+  file { "up_ports.py":
+    ensure  => $ensure,
+    path    => "/usr/local/bin/up_ports.py",
+    owner   => "root",
+    mode    => '0700',
+    content => template("${module_name}/config_db/up_ports.py.erb"),
   }
 
 }
