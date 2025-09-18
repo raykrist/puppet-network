@@ -2,6 +2,7 @@
 
 import subprocess
 import json
+import os
 
 config_file = "/etc/sonic/config_db.json"
 
@@ -17,7 +18,10 @@ for port in endpoint_ports:
   #print(f'config interface shutdown {port}')
 
 # backup current config_db.json
-subprocess.run(["cp", "-f", config_file, f'{config_file}.bak-down_ports.py'])
+if os.path.exists(config_file):
+  subprocess.run(["cp", "-f", config_file, f'{config_file}.bak-down_ports.py'])
+else:
+  print('Error: missing main sonic config file {config_file}')
 
 # make sure we edit config_db.json to keep endpoint ports down after reboot
 with open(config_file, 'r') as file:
