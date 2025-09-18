@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+import subprocess
+import os
+
+config_file = "/etc/sonic/config_db.json"
+old_config_file = f'{config_file}.bak-down_ports.py'
+
+endpoint_ports = [
+<% @endpoint_ports.each do |port| -%>
+  '<%= port %>',
+<% end %>
+]
+
+# take up all endpoint ports with sonic cli
+for port in endpoint_ports:
+  subprocess.run(["config", "interface", "startup", port])
+  #print(f'config interface startup {port}')
+
+# restore current config_db.json (not critical as a puppet run will also restore this)
+if os.path.exists(old_config_file):
+  subprocess.run(["cp", "-f", old_config_file, config_file])
+else:
+  print(f'Warning: Could not find old config file {old_config_file}')
