@@ -2,13 +2,13 @@
 # This class will add helper scripts to
 # * take down all endpoint ports
 # * take up all endpoint ports,
-# ports matching 'desc_filter' or has 'admin_status' down will not be changed!
+# ports matching 'desc_filter' or has 'admin_status' down will be excluded!
 #
 class network::config_db::scripts(
   Enum['present', 'absent'] $ensure = 'present',
-  Array $desc_filter = ["peerlink", "downlink", "uplink", "test"],
-  Hash $interfaces_hash = $network::config_db::main::interfaces_hash,
-  Hash $default_interfaces_hash = $network::config_db::main::default_interfaces_hash,
+  Array $desc_filter = ["peerlink", "downlink", "uplink"],
+  Hash $interfaces_hash = $network::interfaces_hash,
+  Hash $default_interfaces_hash = $network::default_interfaces_hash,
 ) {
 
   $real_interfaces_hash = deep_merge($interfaces_hash, $default_interfaces_hash)
