@@ -8,6 +8,7 @@ define network::nm::connection(
   Optional[String] $controller = undef,
   Optional[String] $port_type = 'bridge',
   Hash $bond = {},
+  Hash $bridge = {},
   Hash $bond_port = {},
   Hash $ethernet = {},
   Hash $ipv4 = { 'method' => 'disabled' },
@@ -44,6 +45,7 @@ define network::nm::connection(
         'autoconnect' => $autoconnect
       },
       'ethernet'  => $ethernet,
+      'bridge'    => $bridge,
       'bond'      => $bond,
       'bond-port' => $bond_port,
       'ipv4'      => $ipv4,
