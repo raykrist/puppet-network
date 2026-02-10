@@ -11,5 +11,7 @@ allow-hotplug <%= @interface %>
 <% end -%>
 <%= @stanza %> <%= @interface %> <%= @family %> <%= @method %>
 <% @config.each_pair do |key, value| -%>
-<%= "\t#{key} #{value}" %>
-<% end %>
+<% values = value.is_a?(Array) ? value : [value] -%>
+<% values.each do |val| -%>
+<%= "\t#{key} #{val}" %>
+<% end -%><% end -%>
