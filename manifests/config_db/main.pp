@@ -9,7 +9,7 @@ class network::config_db::main(
 
   require network::config_db::setup
 
-  $real_interfaces_hash = deep_merge($interfaces_hash, $default_interfaces_hash)
+  $real_interfaces_hash = deep_merge($default_interfaces_hash, $interfaces_hash)
 
   if $network::reload {
     $notify = Exec["reload_config"]
