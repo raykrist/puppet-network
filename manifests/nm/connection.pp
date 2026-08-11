@@ -14,6 +14,7 @@ define network::nm::connection(
   Hash $ipv4 = { 'method' => 'disabled' },
   Hash $ipv6 = { 'method' => 'disabled' },
   Hash $vlan = {},
+  Hash $vrf = {},
   Boolean $force_update = false,
 ) {
 
@@ -50,7 +51,8 @@ define network::nm::connection(
       'bond-port' => $bond_port,
       'ipv4'      => $ipv4,
       'ipv6'      => $ipv6,
-      'vlan'      => $vlan
+      'vlan'      => $vlan,
+      'vrf'       => $vrf
     }
     if $controller {
       $settings_controller = {
