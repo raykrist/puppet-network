@@ -15,6 +15,7 @@ define network::nm::connection(
   Hash $ipv6 = { 'method' => 'disabled' },
   Hash $vlan = {},
   Hash $vrf = {},
+  Hash $vxlan = {},
   Boolean $force_update = false,
 ) {
 
@@ -52,7 +53,8 @@ define network::nm::connection(
       'ipv4'      => $ipv4,
       'ipv6'      => $ipv6,
       'vlan'      => $vlan,
-      'vrf'       => $vrf
+      'vrf'       => $vrf,
+      'vxlan'     => $vxlan
     }
     if $controller {
       $settings_controller = {
